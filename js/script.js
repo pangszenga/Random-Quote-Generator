@@ -33,7 +33,7 @@ FSJS project 1 - A Random Quote Generator
   Create the `printQuote` function to:
    - call the `getRandomQuote` function and assign it to a variable. - done
    - use the properties of the quote object stored in the variable to
-     create your HTML string.
+     create your HTML string. - done
    - use conditionals to make sure the optional properties exist before
      they are added to the HTML string.
    - set the `innerHTML` of the `quote-box` div to the HTML string.
@@ -49,35 +49,37 @@ FSJS project 1 - A Random Quote Generator
   comment.
 ***/
 
-// document.getElementById('loadQuote').addEventListener("click", printQuote());
-
-
 
 var quotes = [{"quote": "I think, therefore I am",
                "source":"Rene Descarte",
-               "year":  1637,
+               "citation":  "Discourse on the method - Book",
                "category": "philosophical"},
 
               {"quote": "The true value of a human being is determined primarily by the measure and the sense in which he has attained to liberation from the self.",
                "source":"Albert Einstein",
-               "year":  1930,
+               "citation":  "How I see the world - Book",
                "category": "philosophical"},
 
               {"quote": "I never dreamed about success. I worked for it.",
                "source":"Estée Lauder",
-               "year":  1960,
+               "citation": "A sucess story - Book",
                "category": "motivational"},
 
               {"quote": "And here you are living, despite it all",
                "source":"Rupi Kaur",
-               "year":  2017,
+               "citation": "Milk and honey - Book",
                "category": "romance"},
 
-              {"quote": "I write because you exist",
+              {"quote": "I write, because you exist",
                "source":"Michael Faudet",
-               "year":  2014,
+               "citation": "Dirty Pretty Things - Book",
                "category": "romance"}
                ];
+
+let quote = document.getElementsByClassName("quote")[0];
+let source = document.getElementsByClassName("source")[0];
+let citation = document.getElementsByClassName("citation")[0];
+
 
 
 // below function to be called in click function
@@ -85,18 +87,40 @@ var quotes = [{"quote": "I think, therefore I am",
 function getRandomQuote() {
   //loop through array to stick generated number with the array item
   let randomNum = Math.floor(Math.random() * quotes.length);
-  console.log(quotes[randomNum]);
+  let randomQuote = quotes[randomNum];
+  return randomQuote;
 
-  //conditional on category to display background color 
 };//end of function
 
-getRandomQuote();
 
 function printQuote() {
-  let randomQuote = getRandomQuote();
-  //stick background color depending on category with conditional statement
+  let rawQuote = getRandomQuote();
+  console.log(rawQuote);
+  //access properties
+  const newQuote = rawQuote.quote;
+  const newSource = rawQuote.source;
+  const newCitation = rawQuote.citation;
+  console.log(citation);
+  const newCategory = rawQuote.category;
+
+  //replace innerhtml
+  quote.innerHTML = newQuote;
+  source.innerHTML = newSource;
+  citation.innerHTML = newCitation;
+
+  //conditional statement to remove year if not available
+  //conditional statement to change background color depending on genre
+
+  //display
+  return quote;
+  return source;
+  return citation;
 
 }; //end of function
+
+
+document.getElementById('loadQuote').addEventListener("click", printQuote);
+
 
 
 
