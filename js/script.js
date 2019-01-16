@@ -88,4 +88,4 @@ function printQuote() {
 document.getElementById('loadQuote').addEventListener("click", printQuote);
 
 //Timed Handler
-setInterval(printQuote,3010);
+setInterval(printQuote, 3010);
