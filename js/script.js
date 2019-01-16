@@ -33,7 +33,6 @@ let quote = document.getElementsByClassName("quote")[0];
 let source = document.getElementsByClassName("source")[0];
 let citation = document.getElementsByClassName("citation")[0];
 
-
 //Functions
 
 function getRandomQuote() {
@@ -56,7 +55,10 @@ function printQuote() {
   //replace innerhtml
   quote.innerHTML = newQuote;
   citation.innerHTML = newCitation;
-  source.innerHTML = `<p class= "source" > ${newSource} <span class="citation"> ${newCitation} </span> </p>`;
+  source.innerHTML = ` ${newSource} <span class="citation"> ${newCitation} </span>
+                      <span class="year"></span>`;
+  let year = document.getElementsByClassName("year")[0];
+  year.className = "years";
 
   //conditional statement to change background color depending on genre
   if (newCategory === "philosophical")
@@ -78,8 +80,6 @@ function printQuote() {
 
   //display
   return quote;
-  return source;
-  return citation;
 
 } //end of function
 
